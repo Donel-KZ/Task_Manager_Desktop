@@ -113,3 +113,30 @@
     -fx-scale-y: 0.95;
     -fx-effect: none;
 }
+
+.text-field, .password-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Inter";
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1.5;
+    -fx-padding: 10 14 10 14;
+    -fx-prompt-text-fill: #999999;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+    -fx-padding: 9 13 9 13;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+}
+
+.text-field:disabled, .password-field:disabled {
+    -fx-background-color: #F2F2F2;
+    -fx-text-fill: #AAAAAA;
+    -fx-border-color: #E0E0E0;
+    -fx-opacity: 1.0;
+}
