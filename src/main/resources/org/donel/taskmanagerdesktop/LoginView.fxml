@@ -23,8 +23,8 @@
   </rowConstraints>
    <children>
       <Label id="login-label" prefHeight="53.0" prefWidth="342.0" stylesheets="@styles.css" text="Login" textAlignment="CENTER" GridPane.columnIndex="1" />
-      <TextField prefHeight="26.0" prefWidth="322.0" promptText="Username /Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <PasswordField promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField prefHeight="26.0" prefWidth="344.0" promptText="Username /Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <PasswordField prefHeight="26.0" prefWidth="340.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="338.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Button id="forgetPassword-button" mnemonicParsing="false" stylesheets="@styles.css" text="Forgot Password" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
       <Button id="donthaveAnAcount-button" mnemonicParsing="false" stylesheets="@styles.css" text="Don't Have an account?SignUp" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
