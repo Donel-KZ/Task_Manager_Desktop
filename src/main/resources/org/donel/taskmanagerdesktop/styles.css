@@ -140,3 +140,238 @@
     -fx-border-color: #E0E0E0;
     -fx-opacity: 1.0;
 }
+
+.sidebar {
+    -fx-background-color: #000000;
+    -fx-padding: 20 0 20 0;
+    -fx-spacing: 6;
+}
+
+.sidebar-icon {
+    -fx-icon-color: #FFFFFF;
+    -fx-padding: 0 0 16 0;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Inter";
+    -fx-font-size: 14px;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-border-width: 0;
+}
+
+.nav-button:pressed {
+    -fx-background-color: #CCCCCC;
+    -fx-text-fill: #000000;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.top-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #E0E0E0 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 20 0 20;
+    -fx-spacing: 12;
+}
+
+.app-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.header-icon {
+    -fx-icon-color: #000000;
+    -fx-cursor: hand;
+}
+
+.sidebar-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.page-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.search-field {
+    -fx-background-color: #F5F5F5;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Inter";
+    -fx-font-size: 13px;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-padding: 8 16 8 16;
+    -fx-prompt-text-fill: #999999;
+}
+
+.search-field:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #000000;
+    -fx-border-width: 1.5;
+}
+
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-font-size: 16px;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-max-width: 38;
+    -fx-max-height: 38;
+    -fx-cursor: hand;
+}
+
+.icon-button:hover {
+    -fx-background-color: #F0F0F0;
+}
+
+.icon-button:pressed {
+    -fx-background-color: #D9D9D9;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+.content-scroll {
+    -fx-background-color: transparent;
+}
+
+.content-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.content-area {
+    -fx-background-color: #FAFAFA;
+}
+
+.welcome-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.subtitle {
+    -fx-font-family: "Inter";
+    -fx-font-size: 14px;
+    -fx-text-fill: #777777;
+}
+
+.dashboard-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #E5E5E5;
+    -fx-border-width: 1;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 3);
+}
+
+.card-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 13px;
+    -fx-text-fill: #888888;
+}
+
+.card-value {
+    -fx-font-family: "Inter";
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.section-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.primary-button {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Inter";
+    -fx-font-size: 13px;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2c2c2c;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #000000;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.task-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #E5E5E5;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 2);
+}
+
+.task-title {
+    -fx-font-family: "Inter";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.task-subtitle {
+    -fx-font-family: "Inter";
+    -fx-font-size: 12px;
+    -fx-text-fill: #888888;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Inter";
+    -fx-font-size: 13px;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1;
+    -fx-padding: 6 16 6 16;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #000000;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: #2c2c2c;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 0.96;
+    -fx-scale-y: 0.96;
+}
