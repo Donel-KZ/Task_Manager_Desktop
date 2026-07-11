@@ -9,9 +9,11 @@ module org.donel.taskmanagerdesktop {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.desktop;
 
     opens org.donel.taskmanagerdesktop to javafx.fxml;
     opens org.donel.taskmanagerdesktop.controllers to javafx.fxml;
 
     exports org.donel.taskmanagerdesktop;
+    exports org.donel.taskmanagerdesktop.controllers;
 }

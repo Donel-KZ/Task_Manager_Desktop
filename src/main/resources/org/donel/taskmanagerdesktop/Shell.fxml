@@ -9,14 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.donel.taskmanagerdesktop.controllers.ShellController"
->
+<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.donel.taskmanagerdesktop.controllers.ShellController">
 
 
    <left>
@@ -27,42 +22,27 @@
             <Insets bottom="25" left="15" right="15" top="25" />
          </padding>
 
-         <HBox alignment="CENTER_LEFT" spacing="10">
+         <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="240.0" spacing="10">
             <children>
-               <Label styleClass="sidebar-icon" text="📋" />
-               <Label styleClass="sidebar-title" text="Task Manager" />
+               <Label prefHeight="53.0" prefWidth="238.0" styleClass="sidebar-title" text="Task Manager" />
             </children>
          </HBox>
 
          <Separator />
 
-         <Button fx:id="homeButton"
-                 text="Home"
-                 onAction="#showHome"/>
+         <Button fx:id="homeButton" onAction="#showHome" prefHeight="62.0" prefWidth="240.0" text="Home" />
 
-         <Button fx:id="pending"
-                 text="Pending"
-                 onAction="#showPending"/>
+         <Button fx:id="pending" onAction="#showPending" prefHeight="71.0" prefWidth="240.0" text="Pending" />
 
-         <Button fx:id="finished"
-                 text="Finished"
-                 onAction="#showFinished"/>
+         <Button fx:id="finished" onAction="#showFinished" prefHeight="55.0" prefWidth="240.0" text="Finished" />
 
-         <Button fx:id="overdue"
-                 text="Overdue"
-                 onAction="#showOverdue"/>
+         <Button fx:id="overdue" onAction="#showOverdue" prefHeight="65.0" prefWidth="240.0" text="Overdue" />
 
-         <Button fx:id="calendar"
-                 text="Calendar"
-                 onAction="#showCalendar"/>
+         <Button fx:id="calendar" onAction="#showCalendar" prefHeight="72.0" prefWidth="240.0" text="Calendar" />
 
-         <Button fx:id="groupProjects"
-                 text="Group Projects"
-                 onAction="#showGroupProjects"/>
-
-         <Button fx:id="settings"
-                 text="Settings"
-                 onAction="#showSettings"/>
+         <Button fx:id="groupProjects" onAction="#showGroupProjects" prefHeight="71.0" prefWidth="240.0" text="Group Projects" />
+         <Region prefHeight="258.0" prefWidth="237.0" />
+         <Button fx:id="settings" onAction="#showSettings" prefHeight="77.0" prefWidth="240.0" text="Settings" />
 
       </VBox>
 
@@ -84,7 +64,7 @@
 
          <TextField prefWidth="300" promptText="Search tasks..." styleClass="search-field" />
 
-         <Button styleClass="icon-button" text="🔔" />
+         <Button styleClass="icon-button" stylesheets="@styles.css" text="🔔" />
 
          <Button styleClass="icon-button" text="👤" />
 
@@ -95,10 +75,7 @@
    <!-- ================= MAIN CONTENT ================= -->
 
    <center>
-         <ScrollPane fx:id="contentArea"
-                     fitToWidth="true"
-                     hbarPolicy="NEVER"
-                     styleClass="content-scroll"/>
+         <ScrollPane fx:id="contentArea" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll" />
 
    </center>
 

@@ -150,6 +150,7 @@
 .sidebar-icon {
     -fx-font-size: 22px;
     -fx-padding: 0 0 16 0;
+    -fx-background-color: #000000;
 }
 
 .nav-button {
