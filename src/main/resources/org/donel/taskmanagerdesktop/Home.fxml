@@ -12,7 +12,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.donel.taskmanagerdesktop.controllers.HomeController"
+>
 
 
    <left>
@@ -32,21 +36,33 @@
 
          <Separator />
 
-         <Button maxWidth="Infinity" styleClass="nav-button-active" text="🏠 Home" />
+         <Button fx:id="homeButton"
+                 text="Home"
+                 onAction="#showHome"/>
 
-         <Button fx:id="pendingbutton" maxWidth="Infinity" styleClass="nav-button" text="📝 Pending" />
+         <Button fx:id="pending"
+                 text="Pending"
+                 onAction="#showPending"/>
 
-         <Button maxWidth="Infinity" styleClass="nav-button" text="✅ Finished" />
+         <Button fx:id="finished"
+                 text="Finished"
+                 onAction="#showFinished"/>
 
-         <Button maxWidth="Infinity" styleClass="nav-button" text="⚠ Overdue" />
+         <Button fx:id="overdue"
+                 text="Overdue"
+                 onAction="#showOverdue"/>
 
-         <Button maxWidth="Infinity" styleClass="nav-button" text="👥 Group Projects" />
+         <Button fx:id="calendar"
+                 text="Calendar"
+                 onAction="#showCalendar"/>
 
-         <Button maxWidth="Infinity" styleClass="nav-button" text="📅 Calendar" />
+         <Button fx:id="groupProjects"
+                 text="Group Projects"
+                 onAction="#showGroupProjects"/>
 
-         <Region VBox.vgrow="ALWAYS" />
-
-         <Button maxWidth="Infinity" styleClass="nav-button" text="⚙ Settings" />
+         <Button fx:id="settings"
+                 text="Settings"
+                 onAction="#showSettings"/>
 
       </VBox>
 
@@ -80,7 +96,7 @@
 
    <center>
 
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll">
+      <ScrollPane  fx:id="contentArea" fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll">
 
          <content>
 

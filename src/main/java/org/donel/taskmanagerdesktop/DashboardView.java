@@ -15,7 +15,7 @@ public class DashboardView extends Application {
         stage.setTitle("Dashboard");
         stage.setMinWidth(800);
         stage.setMinHeight(500);
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Dashboard.fxml")));
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Home.fxml")));
         stage.setScene(scene);
         stage.show();
 

@@ -1,4 +1,5 @@
 module org.donel.taskmanagerdesktop {
+
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,5 +11,7 @@ module org.donel.taskmanagerdesktop {
     requires eu.hansolo.tilesfx;
 
     opens org.donel.taskmanagerdesktop to javafx.fxml;
+    opens org.donel.taskmanagerdesktop.controllers to javafx.fxml;
+
     exports org.donel.taskmanagerdesktop;
 }
