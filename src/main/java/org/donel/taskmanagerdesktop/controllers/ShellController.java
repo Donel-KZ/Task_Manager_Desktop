@@ -8,14 +8,23 @@ import javafx.scene.control.ScrollPane;
 
 import java.util.List;
 
-public class HomeController {
+/**
+ * Controls the persistent app shell: sidebar, top bar, and contentArea.
+ * This is loaded ONCE by SceneNavigator (after a successful login) and stays
+ * mounted for the rest of the session. It is NOT reloaded per-page.
+ *
+ * Renamed from HomeController: this class was never really about the "Home"
+ * page specifically - it owns the whole shell and swaps FRAGMENTS in and out
+ * of contentArea. "Home" is just one of those fragments (Dashboard.fxml).
+ *
+ * IMPORTANT: every FXML loaded via loadContent() must be a plain fragment
+ * (e.g. a root ScrollPane or VBox) - NOT a full BorderPane with its own
+ * <left>/<top>. Wrapping a fragment in another copy of the shell layout is
+ * what caused the duplicate-sidebar bug. See Dashboard.fxml for the correct
+ * shape a fragment should have.
+ */
+public class ShellController {
 
-    // Content fragments live in org.donel.taskmanagerdesktop (resources root package),
-    // but this controller lives one package deeper, in .controllers.
-    // getClass().getResource() resolves relative to the CLASS's package by default,
-    // so a plain "HomeContent.fxml" would look inside
-    // src/main/resources/org/donel/taskmanagerdesktop/controllers/ and find nothing.
-    // The leading "/" makes it resolve from the resources root instead.
     private static final String CONTENT_BASE = "/org/donel/taskmanagerdesktop/";
 
     @FXML private ScrollPane contentArea;
@@ -65,18 +74,16 @@ public class HomeController {
 
     @FXML
     private void showSettings() {
-        loadContent("org/donel/taskmanagerdesktop/SettingsView.fxml", settings);
+        loadContent("SettingsView.fxml", settings);
     }
 
     private void loadContent(String fxml, Button activeButton) {
         try {
-
-            java.net.URL url = getClass().getResource("/org/donel/taskmanagerdesktop/" + fxml);
+            java.net.URL url = getClass().getResource(CONTENT_BASE + fxml);
 
             System.out.println("Loading: " + url);
 
             FXMLLoader loader = new FXMLLoader(url);
-
             Parent root = loader.load();
 
             contentArea.setContent(root);

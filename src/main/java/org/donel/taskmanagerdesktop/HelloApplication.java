@@ -1,26 +1,26 @@
 package org.donel.taskmanagerdesktop;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import org.donel.taskmanagerdesktop.Navigator.SceneNavigator;
 
 public class HelloApplication extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
 
-        FXMLLoader loader = new FXMLLoader(
-                HelloApplication.class.getResource("/org/donel/taskmanagerdesktop/Home.fxml"));
-
-        Scene scene = new Scene(loader.load(), 1280, 720);
+        SceneNavigator.init(stage);
 
         stage.setTitle("Task Manager");
         stage.setMinWidth(800);
         stage.setMinHeight(500);
-        stage.setScene(scene);
-        stage.show();
+
+        // SceneNavigator.switchTo("LoginView.fxml") and have the login
+        // controller call SceneNavigator.switchTo("Shell.fxml") on success.
+        SceneNavigator.switchTo("Shell.fxml");
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

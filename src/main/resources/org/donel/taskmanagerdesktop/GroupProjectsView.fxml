@@ -5,98 +5,54 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21"
+<ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            prefWidth="1280.0"
-            prefHeight="720.0"
-            stylesheets="@styles.css">
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            styleClass="content-scroll">
 
-   <left>
-      <VBox prefWidth="240" spacing="12" styleClass="sidebar">
-         <padding><Insets top="25" right="15" bottom="25" left="15"/></padding>
+    <content>
+        <VBox spacing="25" styleClass="content-area">
+            <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
 
-         <HBox spacing="10" alignment="CENTER_LEFT">
-            <children>
-               <Label text="📋" styleClass="sidebar-icon"/>
-               <Label text="Task Manager" styleClass="sidebar-title"/>
-            </children>
-         </HBox>
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Your Group Projects" styleClass="section-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+ New Project" styleClass="primary-button"/>
+            </HBox>
 
-         <Separator/>
+            <VBox spacing="15">
 
-         <Button text="🏠 Home" maxWidth="Infinity" styleClass="nav-button"/>
-         <Button text="📝 Pending" maxWidth="Infinity" styleClass="nav-button"/>
-         <Button text="✅ Finished" maxWidth="Infinity" styleClass="nav-button"/>
-         <Button text="⚠ Overdue" maxWidth="Infinity" styleClass="nav-button"/>
-         <Button text="👥 Group Projects" maxWidth="Infinity" styleClass="nav-button-active"/>
-         <Button text="📅 Calendar" maxWidth="Infinity" styleClass="nav-button"/>
-
-         <Region VBox.vgrow="ALWAYS"/>
-
-         <Button text="⚙ Settings" maxWidth="Infinity" styleClass="nav-button"/>
-      </VBox>
-   </left>
-
-   <top>
-      <HBox alignment="CENTER_LEFT" spacing="15" prefHeight="70" styleClass="top-bar">
-         <padding><Insets top="15" right="25" bottom="15" left="25"/></padding>
-         <Label text="Group Projects" styleClass="page-title"/>
-         <Region HBox.hgrow="ALWAYS"/>
-         <TextField promptText="Search projects..." prefWidth="300" styleClass="search-field"/>
-         <Button text="🔔" styleClass="icon-button"/>
-         <Button text="👤" styleClass="icon-button"/>
-      </HBox>
-   </top>
-
-   <center>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll">
-         <content>
-            <VBox spacing="25" styleClass="content-area">
-               <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
-
-               <HBox alignment="CENTER_LEFT">
-                  <Label text="Your Group Projects" styleClass="section-title"/>
-                  <Region HBox.hgrow="ALWAYS"/>
-                  <Button text="+ New Project" styleClass="primary-button"/>
-               </HBox>
-
-               <VBox spacing="15">
-
-                  <VBox spacing="12" styleClass="group-card">
-                     <HBox alignment="CENTER_LEFT" spacing="12">
+                <VBox spacing="12" styleClass="group-card">
+                    <HBox alignment="CENTER_LEFT" spacing="12">
                         <VBox spacing="2" HBox.hgrow="ALWAYS">
-                           <Label text="Parking Management System" styleClass="group-title"/>
-                           <Label text="4 members • 3 deliverables • Due in 6 days" styleClass="group-meta"/>
+                            <Label text="Parking Management System" styleClass="group-title"/>
+                            <Label text="4 members • 3 deliverables • Due in 6 days" styleClass="group-meta"/>
                         </VBox>
                         <Button text="Open" styleClass="secondary-button"/>
-                     </HBox>
-                     <ProgressBar progress="0.65" prefWidth="Infinity" maxWidth="Infinity" styleClass="group-progress-bar"/>
-                     <Label text="65% complete" styleClass="group-meta"/>
-                  </VBox>
+                    </HBox>
+                    <ProgressBar progress="0.65" prefWidth="Infinity" maxWidth="Infinity" styleClass="group-progress-bar"/>
+                    <Label text="65% complete" styleClass="group-meta"/>
+                </VBox>
 
-                  <VBox spacing="12" styleClass="group-card">
-                     <HBox alignment="CENTER_LEFT" spacing="12">
+                <VBox spacing="12" styleClass="group-card">
+                    <HBox alignment="CENTER_LEFT" spacing="12">
                         <VBox spacing="2" HBox.hgrow="ALWAYS">
-                           <Label text="Eduvos Research Design Proposal" styleClass="group-title"/>
-                           <Label text="2 members • 1 deliverable • Due in 12 days" styleClass="group-meta"/>
+                            <Label text="Eduvos Research Design Proposal" styleClass="group-title"/>
+                            <Label text="2 members • 1 deliverable • Due in 12 days" styleClass="group-meta"/>
                         </VBox>
                         <Button text="Open" styleClass="secondary-button"/>
-                     </HBox>
-                     <ProgressBar progress="0.3" prefWidth="Infinity" maxWidth="Infinity" styleClass="group-progress-bar"/>
-                     <Label text="30% complete" styleClass="group-meta"/>
-                  </VBox>
+                    </HBox>
+                    <ProgressBar progress="0.3" prefWidth="Infinity" maxWidth="Infinity" styleClass="group-progress-bar"/>
+                    <Label text="30% complete" styleClass="group-meta"/>
+                </VBox>
 
-               </VBox>
             </VBox>
-         </content>
-      </ScrollPane>
-   </center>
+        </VBox>
+    </content>
 
-</BorderPane>
+</ScrollPane>
