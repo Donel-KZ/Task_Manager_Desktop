@@ -29,6 +29,10 @@ public class pendingController {
     private void showPending() throws IOException {
         loadScreen("PendindView.fxml", pending);
     }
+    @FXML
+    private void showfinished() throws IOException {
+        loadScreen("FinishedView.fxml", finished);
+    }
 
 
 
@@ -45,6 +49,11 @@ public class pendingController {
     @FXML
     private void settings() throws IOException {
         loadScreen("SettingsView.fxml", settings);
+    }
+
+    @FXML
+    private void showCalender() throws IOException {
+        loadScreen("CalenderView.fxml", finished);
     }
 
 
