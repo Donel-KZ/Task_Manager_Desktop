@@ -19,10 +19,16 @@ public class finishedController {
     @FXML private Button overdue;
     @FXML private Button groupProjects;
     @FXML private Button settings;
+    @FXML private Button calendar;
 
     @FXML
     public void initialize() throws IOException {
         showfinished();
+    }
+
+    @FXML
+    private void showHome() throws IOException {
+        loadScreen("Dashboard.fxml", homeButton);
     }
 
     private void showfinished() throws IOException {
@@ -51,9 +57,8 @@ public class finishedController {
         loadScreen("SettingsView.fxml", settings);
     }
 
-    @FXML
     private void showCalender() throws IOException {
-        loadScreen("CalenderView.fxml", finished);
+        loadScreen("CalenderView.fxml", calendar);
     }
 
 

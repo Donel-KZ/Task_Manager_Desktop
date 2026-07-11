@@ -9,36 +9,31 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.util.List;
 
-public class OverdueController {
+public class GroupProjectController
+{
     @FXML
     private StackPane contentArea;
-    @FXML
-    private Button homeButton;
+    @FXML private Button homeButton;
 
-    @FXML
-    private Button pending;
-    @FXML
-    private Button finished;
-    @FXML
-    private Button overdue;
-    @FXML
-    private Button groupProjects;
-    @FXML
-    private Button settings;
+    @FXML private Button pending;
+    @FXML private Button finished;
+    @FXML private Button overdue;
+    @FXML private Button groupProjects;
+    @FXML private Button settings;
     @FXML private Button calendar;
-
 
     @FXML
     public void initialize() throws IOException {
-        showoverdue();
+        groupProjects();
+    }
+
+    @FXML
+    private void showHome() throws IOException {
+        loadScreen("Dashboard.fxml", homeButton);
     }
 
     private void showfinished() throws IOException {
         loadScreen("FinishedView.fxml", finished);
-    }
-
-    private void showHome() throws IOException {
-        loadScreen("Dashboard.fxml", homeButton);
     }
 
     @FXML
@@ -47,8 +42,9 @@ public class OverdueController {
     }
 
 
+
     @FXML
-    private void showoverdue() throws IOException {
+    private void overdue() throws IOException {
         loadScreen("OverdueView.fxml", overdue);
     }
 
@@ -62,7 +58,6 @@ public class OverdueController {
         loadScreen("SettingsView.fxml", settings);
     }
 
-    @FXML
     private void showCalender() throws IOException {
         loadScreen("CalenderView.fxml", calendar);
     }
@@ -89,5 +84,4 @@ public class OverdueController {
 
 
     }
-
 }

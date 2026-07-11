@@ -19,10 +19,17 @@ public class pendingController {
     @FXML private Button overdue;
     @FXML private Button groupProjects;
     @FXML private Button settings;
+    @FXML private Button calendar;
+
 
     @FXML
     public void initialize() throws IOException {
         showPending();
+    }
+
+    @FXML
+    private void showHome() throws IOException {
+        loadScreen("Dashboard.fxml", homeButton);
     }
 
     @FXML
@@ -53,7 +60,7 @@ public class pendingController {
 
     @FXML
     private void showCalender() throws IOException {
-        loadScreen("CalenderView.fxml", finished);
+        loadScreen("CalenderView.fxml", calendar);
     }
 
 

@@ -19,6 +19,8 @@ public class homeController {
     @FXML private Button overdue;
     @FXML private Button groupProjects;
     @FXML private Button settings;
+    @FXML private Button calendar;
+
 
     @FXML
     public void initialize() {
@@ -52,7 +54,7 @@ public class homeController {
 
     @FXML
     private void showCalender() throws IOException {
-        loadScene("CalenderView.fxml", finished);
+        loadScene("CalenderView.fxml", calendar);
     }
 
 
