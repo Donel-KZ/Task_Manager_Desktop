@@ -8,68 +8,46 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/26"
-            xmlns:fx="http://javafx.com/fxml/1"
-            prefWidth="1280.0"
-            prefHeight="720.0"
-            stylesheets="@styles.css"
-            styleClass="root">
+<BorderPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
 
    <!-- ================= LEFT SIDEBAR ================= -->
 
    <left>
 
-      <VBox prefWidth="240"
-            spacing="12"
-            styleClass="sidebar">
+      <VBox prefWidth="240" spacing="12" styleClass="sidebar">
 
          <padding>
-            <Insets top="25" right="15" bottom="25" left="15"/>
+            <Insets bottom="25" left="15" right="15" top="25" />
          </padding>
 
-         <HBox spacing="10" alignment="CENTER_LEFT">
+         <HBox alignment="CENTER_LEFT" spacing="10">
             <children>
-               <Label text="Task Manager"
-                      styleClass="sidebar-title"/>
+               <Label styleClass="sidebar-icon" text="📋" />
+               <Label styleClass="sidebar-title" text="Task Manager" />
             </children>
          </HBox>
 
-         <Separator/>
+         <Separator />
 
-         <Button text="🏠 Home"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button maxWidth="Infinity" styleClass="nav-button-active" text="🏠 Home" />
 
-         <Button text="📝 Pending"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button fx:id="pendingbutton" maxWidth="Infinity" styleClass="nav-button" text="📝 Pending" />
 
-         <Button text="✅ Finished"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button maxWidth="Infinity" styleClass="nav-button" text="✅ Finished" />
 
-         <Button text="⚠ Overdue"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button maxWidth="Infinity" styleClass="nav-button" text="⚠ Overdue" />
 
-         <Button text="👥 Group Projects"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button maxWidth="Infinity" styleClass="nav-button" text="👥 Group Projects" />
 
-         <Button text="📅 Calendar"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button maxWidth="Infinity" styleClass="nav-button" text="📅 Calendar" />
 
-         <Region VBox.vgrow="ALWAYS"/>
+         <Region VBox.vgrow="ALWAYS" />
 
-         <Button text="⚙ Settings"
-                 maxWidth="Infinity"
-                 styleClass="nav-button"/>
+         <Button maxWidth="Infinity" styleClass="nav-button" text="⚙ Settings" />
 
       </VBox>
 
@@ -79,29 +57,21 @@
 
    <top>
 
-      <HBox alignment="CENTER_LEFT"
-            spacing="15"
-            prefHeight="70"
-            styleClass="top-bar">
+      <HBox alignment="CENTER_LEFT" prefHeight="70" spacing="15" styleClass="top-bar">
 
          <padding>
-            <Insets top="15" right="25" bottom="15" left="25"/>
+            <Insets bottom="15" left="25" right="25" top="15" />
          </padding>
 
-         <Label text="Dashboard"
-                styleClass="page-title"/>
+         <Label styleClass="page-title" text="Dashboard" />
 
-         <Region HBox.hgrow="ALWAYS"/>
+         <Region HBox.hgrow="ALWAYS" />
 
-         <TextField promptText="Search tasks..."
-                    prefWidth="300"
-                    styleClass="search-field"/>
+         <TextField prefWidth="300" promptText="Search tasks..." styleClass="search-field" />
 
-         <Button text="🔔"
-                 styleClass="icon-button"/>
+         <Button styleClass="icon-button" text="🔔" />
 
-         <Button text="👤"
-                 styleClass="icon-button"/>
+         <Button styleClass="icon-button" text="👤" />
 
       </HBox>
 
@@ -111,31 +81,23 @@
 
    <center>
 
-      <ScrollPane fitToWidth="true"
-                  hbarPolicy="NEVER"
-                  styleClass="content-scroll">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll">
 
          <content>
 
-            <VBox spacing="25"
-                  styleClass="content-area">
+            <VBox spacing="25" styleClass="content-area">
 
                <padding>
-                  <Insets top="25"
-                          right="25"
-                          bottom="25"
-                          left="25"/>
+                  <Insets bottom="25" left="25" right="25" top="25" />
                </padding>
 
                <!-- Welcome -->
 
                <VBox spacing="5">
 
-                  <Label text="Welcome Back!"
-                         styleClass="welcome-title"/>
+                  <Label styleClass="welcome-title" text="Welcome Back!" />
 
-                  <Label text="Here's an overview of your tasks today."
-                         styleClass="subtitle"/>
+                  <Label styleClass="subtitle" text="Here's an overview of your tasks today." />
 
                </VBox>
 
@@ -143,51 +105,35 @@
 
                <HBox spacing="20">
 
-                  <VBox spacing="8"
-                        prefWidth="220"
-                        styleClass="dashboard-card">
+                  <VBox prefWidth="220" spacing="8" styleClass="dashboard-card">
 
-                     <Label text="Total Tasks"
-                            styleClass="card-title"/>
+                     <Label styleClass="card-title" text="Total Tasks" />
 
-                     <Label text="18"
-                            styleClass="card-value"/>
+                     <Label styleClass="card-value" text="18" />
 
                   </VBox>
 
-                  <VBox spacing="8"
-                        prefWidth="220"
-                        styleClass="dashboard-card">
+                  <VBox prefWidth="220" spacing="8" styleClass="dashboard-card">
 
-                     <Label text="Pending"
-                            styleClass="card-title"/>
+                     <Label styleClass="card-title" text="Pending" />
 
-                     <Label text="8"
-                            styleClass="card-value"/>
+                     <Label styleClass="card-value" text="8" />
 
                   </VBox>
 
-                  <VBox spacing="8"
-                        prefWidth="220"
-                        styleClass="dashboard-card">
+                  <VBox prefWidth="220" spacing="8" styleClass="dashboard-card">
 
-                     <Label text="Finished"
-                            styleClass="card-title"/>
+                     <Label styleClass="card-title" text="Finished" />
 
-                     <Label text="10"
-                            styleClass="card-value"/>
+                     <Label styleClass="card-value" text="10" />
 
                   </VBox>
 
-                  <VBox spacing="8"
-                        prefWidth="220"
-                        styleClass="dashboard-card">
+                  <VBox prefWidth="220" spacing="8" styleClass="dashboard-card">
 
-                     <Label text="Overdue"
-                            styleClass="card-title"/>
+                     <Label styleClass="card-title" text="Overdue" />
 
-                     <Label text="2"
-                            styleClass="card-value"/>
+                     <Label styleClass="card-value" text="2" />
 
                   </VBox>
 
@@ -199,47 +145,37 @@
 
                   <HBox alignment="CENTER_LEFT">
 
-                     <Label text="Today's Tasks"
-                            styleClass="section-title"/>
+                     <Label styleClass="section-title" text="Today's Tasks" />
 
-                     <Region HBox.hgrow="ALWAYS"/>
+                     <Region HBox.hgrow="ALWAYS" />
 
-                     <Button text="+ Add Task"
-                             styleClass="primary-button"/>
+                     <Button styleClass="primary-button" text="+ Add Task" />
 
                   </HBox>
 
                   <!-- Task Card -->
 
-                  <StackPane prefHeight="80"
-                             styleClass="task-card">
+                  <StackPane prefHeight="80" styleClass="task-card">
 
-                     <HBox alignment="CENTER_LEFT"
-                           spacing="20">
+                     <HBox alignment="CENTER_LEFT" spacing="20">
 
                         <padding>
-                           <Insets top="15"
-                                   right="20"
-                                   bottom="15"
-                                   left="20"/>
+                           <Insets bottom="15" left="20" right="20" top="15" />
                         </padding>
 
-                        <Label text="☐"/>
+                        <Label text="☐" />
 
                         <VBox spacing="4">
 
-                           <Label text="Finish JavaFX Desktop UI"
-                                  styleClass="task-title"/>
+                           <Label styleClass="task-title" text="Finish JavaFX Desktop UI" />
 
-                           <Label text="Priority: High • Due Today"
-                                  styleClass="task-subtitle"/>
+                           <Label styleClass="task-subtitle" text="Priority: High • Due Today" />
 
                         </VBox>
 
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
 
-                        <Button text="Edit"
-                                styleClass="secondary-button"/>
+                        <Button styleClass="secondary-button" text="Edit" />
 
                      </HBox>
 
@@ -247,35 +183,27 @@
 
                   <!-- Another Task -->
 
-                  <StackPane prefHeight="80"
-                             styleClass="task-card">
+                  <StackPane prefHeight="80" styleClass="task-card">
 
-                     <HBox alignment="CENTER_LEFT"
-                           spacing="20">
+                     <HBox alignment="CENTER_LEFT" spacing="20">
 
                         <padding>
-                           <Insets top="15"
-                                   right="20"
-                                   bottom="15"
-                                   left="20"/>
+                           <Insets bottom="15" left="20" right="20" top="15" />
                         </padding>
 
-                        <Label text="☑"/>
+                        <Label text="☑" />
 
                         <VBox spacing="4">
 
-                           <Label text="Connect Spring Boot Backend"
-                                  styleClass="task-title"/>
+                           <Label styleClass="task-title" text="Connect Spring Boot Backend" />
 
-                           <Label text="Completed Yesterday"
-                                  styleClass="task-subtitle"/>
+                           <Label styleClass="task-subtitle" text="Completed Yesterday" />
 
                         </VBox>
 
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
 
-                        <Button text="View"
-                                styleClass="secondary-button"/>
+                        <Button styleClass="secondary-button" text="View" />
 
                      </HBox>
 
