@@ -2,55 +2,32 @@ package org.donel.taskmanagerdesktop.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.donel.taskmanagerdesktop.controllers.Task;
-import org.donel.taskmanagerdesktop.controllers.TaskPriority;
-import org.donel.taskmanagerdesktop.controllers.TaskStatus;
+import org.donel.taskmanagerdesktop.dialogs.NewTaskInput;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
- * Single in-memory source of truth for tasks, shared by Dashboard, Pending,
- * Finished, and Overdue controllers so their counts and lists always agree.
+ * Central in-memory source of truth for the desktop task UI.
  *
- * This is a placeholder for the real Spring Boot backend. When that's wired
- * in, this class is the only place that needs to change - swap the seeded
- * ObservableList for data fetched from the API, and every screen that reads
- * through TaskService keeps working unchanged.
+ * The hard-coded task examples have been removed so the application now starts
+ * empty and only displays data that is created through the dialogs.
  */
 public final class TaskService {
 
     private static final TaskService INSTANCE = new TaskService();
 
     private final ObservableList<Task> tasks = FXCollections.observableArrayList();
+    private final AtomicInteger idGenerator = new AtomicInteger(1);
 
     private TaskService() {
-        seed();
+        // intentionally empty: no seeded demo tasks
     }
 
     public static TaskService getInstance() {
         return INSTANCE;
-    }
-
-    private void seed() {
-        tasks.addAll(
-                new Task(1, "Finish JavaFX Desktop UI", "Due Today",
-                        TaskStatus.PENDING, TaskPriority.HIGH, true),
-                new Task(2, "Write project README", "Due in 2 days",
-                        TaskStatus.PENDING, TaskPriority.MEDIUM, false),
-                new Task(3, "Review pull request #42", "Due in 5 days",
-                        TaskStatus.PENDING, TaskPriority.LOW, false),
-
-                new Task(4, "Connect Spring Boot Backend", "Completed Yesterday",
-                        TaskStatus.FINISHED, null, true),
-                new Task(5, "Push iOS TaskManager to GitHub", "Completed 3 days ago",
-                        TaskStatus.FINISHED, null, false),
-
-                new Task(6, "Fix Room 2.6.1 + KSP2 conflict", "Was due 2 days ago",
-                        TaskStatus.OVERDUE, null, false),
-                new Task(7, "Submit research proposal draft", "Was due yesterday",
-                        TaskStatus.OVERDUE, null, false)
-        );
     }
 
     public ObservableList<Task> getAllTasks() {
@@ -61,7 +38,7 @@ public final class TaskService {
         return byStatus(TaskStatus.PENDING);
     }
 
-    public List<org.donel.taskmanagerdesktop.controllers.Task> getFinishedTasks() {
+    public List<Task> getFinishedTasks() {
         return byStatus(TaskStatus.FINISHED);
     }
 
@@ -89,6 +66,51 @@ public final class TaskService {
 
     public int getOverdueCount() {
         return getOverdueTasks().size();
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
+    public void addFromInput(NewTaskInput input) {
+        if (input == null || input.title() == null || input.title().isBlank()) {
+            return;
+        }
+
+        LocalDate dueDate = input.dueDate();
+        TaskStatus status = determineStatus(dueDate);
+        TaskPriority priority = parsePriority(input.priority());
+        boolean dueToday = dueDate != null && dueDate.isEqual(LocalDate.now());
+
+        Task task = new Task(
+                idGenerator.getAndIncrement(),
+                input.title().trim(),
+                input.description() == null ? "" : input.description().trim(),
+                status,
+                priority,
+                dueToday,
+                dueDate
+        );
+
+        tasks.add(task);
+    }
+
+    private TaskStatus determineStatus(LocalDate dueDate) {
+        if (dueDate == null) {
+            return TaskStatus.PENDING;
+        }
+        return dueDate.isBefore(LocalDate.now()) ? TaskStatus.OVERDUE : TaskStatus.PENDING;
+    }
+
+    private TaskPriority parsePriority(String priorityText) {
+        if (priorityText == null || priorityText.isBlank()) {
+            return TaskPriority.MEDIUM;
+        }
+        try {
+            return TaskPriority.valueOf(priorityText.trim().toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            return TaskPriority.MEDIUM;
+        }
     }
 
     private List<Task> byStatus(TaskStatus status) {

@@ -1,5 +1,7 @@
 package org.donel.taskmanagerdesktop.controllers;
 
+import java.time.LocalDate;
+
 /**
  * Plain in-memory task model. Once the Spring Boot backend is wired in,
  * this shape should line up closely with the API's task DTO/entity -
@@ -16,7 +18,7 @@ public class Task {
     private final boolean dueToday;      // used to populate Home's "Today's Tasks" section
 
     public Task(int id, String title, String subtitle, TaskStatus status,
-                TaskPriority priority, boolean dueToday) {
+                TaskPriority priority, boolean dueToday, LocalDate dueDate) {
         this.id = id;
         this.title = title;
         this.subtitle = subtitle;
