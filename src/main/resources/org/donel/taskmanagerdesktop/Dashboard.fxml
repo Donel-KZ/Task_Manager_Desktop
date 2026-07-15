@@ -104,7 +104,9 @@
 
                     <Region HBox.hgrow="ALWAYS"/>
 
-                    <Button text="+ Add Task"
+                    <Button fx:id="addTaskButton"
+                            text="+ Add Task"
+                            onAction="#addTask"
                             styleClass="primary-button"/>
 
                 </HBox>
