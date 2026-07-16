@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="873.0" styleClass="custom-ui-panel" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="873.0" styleClass="custom-ui-panel" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.donel.taskmanagerdesktop.Controllers.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="443.0" minWidth="-Infinity" prefWidth="411.2188720703125" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="362.3975830078125" minWidth="-Infinity" prefWidth="339.287109375" />
@@ -23,10 +23,10 @@
   </rowConstraints>
    <children>
       <Label id="login-label" prefHeight="53.0" prefWidth="342.0" stylesheets="@styles.css" text="Login" textAlignment="CENTER" GridPane.columnIndex="1" />
-      <TextField prefHeight="26.0" prefWidth="344.0" promptText="Username /Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <PasswordField prefHeight="26.0" prefWidth="340.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="338.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <TextField fx:id="emailField" prefHeight="26.0" prefWidth="344.0" promptText="Username /Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <PasswordField fx:id="passwordField" prefHeight="26.0" prefWidth="340.0" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="48.0" prefWidth="338.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Button id="forgetPassword-button" mnemonicParsing="false" stylesheets="@styles.css" text="Forgot Password" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-      <Button id="donthaveAnAcount-button" mnemonicParsing="false" stylesheets="@styles.css" text="Don't Have an account?SignUp" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+      <Button fx:id="signupNavButton" id="donthaveAnAcount-button" mnemonicParsing="false" onAction="#openSignUp" stylesheets="@styles.css" text="Don't Have an account? Sign Up" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="TOP" />
    </children>
 </GridPane>

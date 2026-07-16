@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -10,7 +11,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.donel.taskmanagerdesktop.controllers.AddTaskDialogController"
+      fx:controller="org.donel.taskmanagerdesktop.Controllers.AddTaskDialogController"
       spacing="12"
       prefWidth="420">
 
@@ -29,5 +30,8 @@
 
         <Label text="Due date" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
         <DatePicker fx:id="dueDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Priority" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="priorityComboBox" maxWidth="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
     </GridPane>
 </VBox>

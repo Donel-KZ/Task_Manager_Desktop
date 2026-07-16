@@ -1,13 +1,14 @@
 package org.donel.taskmanagerdesktop;
 
+import java.awt.Taskbar;
+
+import javax.swing.ImageIcon;
+
+import org.donel.taskmanagerdesktop.Navigator.SceneNavigator;
+
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.donel.taskmanagerdesktop.Navigator.SceneNavigator;
-import org.kordamp.ikonli.javafx.Icon;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class HelloApplication extends Application {
 
@@ -30,9 +31,7 @@ public class HelloApplication extends Application {
                 taskbar.setIconImage(dockIcon);
             }
         }
-        // SceneNavigator.switchTo("LoginView.fxml") and have the login
-        // controller call SceneNavigator.switchTo("Shell.fxml") on success.
-        SceneNavigator.switchTo("Shell.fxml");
+        SceneNavigator.switchTo("LoginView.fxml");
     }
 
     public static void main(String[] args) {

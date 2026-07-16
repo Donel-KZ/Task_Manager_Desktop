@@ -5,12 +5,14 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.donel.taskmanagerdesktop.Controllers.SettingsController"
             fitToWidth="true"
             hbarPolicy="NEVER"
             styleClass="content-scroll">
@@ -27,32 +29,22 @@
             <VBox spacing="12">
                 <Label text="Profile" styleClass="settings-section-title"/>
                 <VBox styleClass="settings-panel">
-
+                        <HBox alignment="CENTER_LEFT" spacing="18" styleClass="settings-row">
+                            <ImageView fx:id="avatarImageView" fitHeight="72" fitWidth="72" pickOnBounds="true" preserveRatio="true" styleClass="avatar-image"/>
+                            <VBox spacing="4">
+                                <Label fx:id="nameLabel" text="Loading user..." styleClass="settings-label"/>
+                                <Label fx:id="emailLabel" text="Loading email..." styleClass="settings-sublabel"/>
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="uploadProfilePictureButton" text="Upload Photo" styleClass="secondary-button" onAction="#handleUploadProfilePicture"/>
+                        </HBox>
                     <HBox alignment="CENTER_LEFT" styleClass="settings-row">
                         <VBox spacing="2">
-                            <Label text="Name" styleClass="settings-label"/>
-                            <Label text="Donel Kia Nzambi" styleClass="settings-sublabel"/>
+                            <Label text="Account status" styleClass="settings-label"/>
+                            <Label text="Live session profile" styleClass="settings-sublabel"/>
                         </VBox>
                         <Region HBox.hgrow="ALWAYS"/>
-                        <Button text="Edit" styleClass="secondary-button"/>
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" styleClass="settings-row">
-                        <VBox spacing="2">
-                            <Label text="Email" styleClass="settings-label"/>
-                            <Label text="donel@example.com" styleClass="settings-sublabel"/>
-                        </VBox>
-                        <Region HBox.hgrow="ALWAYS"/>
-                        <Button text="Edit" styleClass="secondary-button"/>
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" styleClass="settings-row">
-                        <VBox spacing="2">
-                            <Label text="Password" styleClass="settings-label"/>
-                            <Label text="Last changed 3 months ago" styleClass="settings-sublabel"/>
-                        </VBox>
-                        <Region HBox.hgrow="ALWAYS"/>
-                        <Button text="Change" styleClass="secondary-button"/>
+                        <Button text="Synced" disable="true" styleClass="secondary-button"/>
                     </HBox>
 
                 </VBox>

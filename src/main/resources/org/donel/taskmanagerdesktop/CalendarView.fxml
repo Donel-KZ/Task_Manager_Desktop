@@ -13,7 +13,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.donel.taskmanagerdesktop.controllers.CalendarController"
+            fx:controller="org.donel.taskmanagerdesktop.Controllers.CalendarController"
             fitToWidth="true"
             hbarPolicy="NEVER"
             styleClass="content-scroll">
@@ -23,11 +23,11 @@
             <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
 
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Button text="‹" styleClass="secondary-button"/>
-                <Label text="July 2026" styleClass="calendar-nav-label"/>
-                <Button text="›" styleClass="secondary-button"/>
+                <Button fx:id="prevMonthButton" text="‹" styleClass="secondary-button"/>
+                <Label fx:id="monthLabel" text="Month" styleClass="calendar-nav-label"/>
+                <Button fx:id="nextMonthButton" text="›" styleClass="secondary-button"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button text="+ New Event" styleClass="primary-button"/>
+                <Button fx:id="newSessionButton" text="+ Add Session" styleClass="primary-button"/>
             </HBox>
 
             <GridPane fx:id="calendarGrid" hgap="1" vgap="1" styleClass="dashboard-card">

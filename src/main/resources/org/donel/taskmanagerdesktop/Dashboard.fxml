@@ -10,7 +10,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.donel.taskmanagerdesktop.controllers.DashboardController"
+            fx:controller="org.donel.taskmanagerdesktop.Controllers.DashboardController"
             fitToWidth="true"
             hbarPolicy="NEVER"
             styleClass="content-scroll">
