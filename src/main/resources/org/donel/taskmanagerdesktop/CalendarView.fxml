@@ -13,6 +13,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.donel.taskmanagerdesktop.Controllers.CalendarController"
             fitToWidth="true"
             hbarPolicy="NEVER"
             styleClass="content-scroll">
@@ -22,14 +23,14 @@
             <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
 
             <HBox alignment="CENTER_LEFT" spacing="15">
-                <Button text="‹" styleClass="secondary-button"/>
-                <Label text="July 2026" styleClass="calendar-nav-label"/>
-                <Button text="›" styleClass="secondary-button"/>
+                <Button fx:id="prevMonthButton" text="‹" styleClass="secondary-button"/>
+                <Label fx:id="monthLabel" text="Month" styleClass="calendar-nav-label"/>
+                <Button fx:id="nextMonthButton" text="›" styleClass="secondary-button"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button text="+ New Event" styleClass="primary-button"/>
+                <Button fx:id="newSessionButton" text="+ Add Session" styleClass="primary-button"/>
             </HBox>
 
-            <GridPane hgap="1" vgap="1" styleClass="dashboard-card">
+            <GridPane fx:id="calendarGrid" hgap="1" vgap="1" styleClass="dashboard-card">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="14.28"/>
                     <ColumnConstraints percentWidth="14.28"/>
@@ -47,60 +48,6 @@
                     <RowConstraints minHeight="90"/>
                     <RowConstraints minHeight="90"/>
                 </rowConstraints>
-
-                <Label text="Sun" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                <Label text="Mon" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                <Label text="Tue" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-                <Label text="Wed" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
-                <Label text="Thu" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
-                <Label text="Fri" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="5"/>
-                <Label text="Sat" styleClass="calendar-day-header" GridPane.rowIndex="0" GridPane.columnIndex="6"/>
-
-                <!-- Week 1 -->
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="0"><Label text="28" styleClass="calendar-cell-label calendar-cell-muted"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="1"><Label text="29" styleClass="calendar-cell-label calendar-cell-muted"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="2"><Label text="30" styleClass="calendar-cell-label calendar-cell-muted"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="3"><Label text="1" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="4"><Label text="2" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="5"><Label text="3" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="1" GridPane.columnIndex="6"><Label text="4" styleClass="calendar-cell-label"/></VBox>
-
-                <!-- Week 2 -->
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="0"><Label text="5" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="1"><Label text="6" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="2"><Label text="7" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="3"><Label text="8" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="4"><Label text="9" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="5"><Label text="10" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="2" GridPane.columnIndex="6"><Label text="11" styleClass="calendar-cell-label"/></VBox>
-
-                <!-- Week 3 -->
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="0"><Label text="12" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="1"><Label text="13" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="2"><Label text="14" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="3"><Label text="15" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="4"><Label text="16" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="5"><Label text="17" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="3" GridPane.columnIndex="6"><Label text="18" styleClass="calendar-cell-label"/></VBox>
-
-                <!-- Week 4 -->
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="0"><Label text="19" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="1"><Label text="20" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="2"><Label text="21" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="3"><Label text="22" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="4"><Label text="23" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="5"><Label text="24" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="4" GridPane.columnIndex="6"><Label text="25" styleClass="calendar-cell-label"/></VBox>
-
-                <!-- Week 5 -->
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="5" GridPane.columnIndex="0"><Label text="26" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell calendar-cell-today" GridPane.rowIndex="5" GridPane.columnIndex="1"><Label text="27" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="5" GridPane.columnIndex="2"><Label text="28" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="5" GridPane.columnIndex="3"><Label text="29" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="5" GridPane.columnIndex="4"><Label text="30" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="5" GridPane.columnIndex="5"><Label text="31" styleClass="calendar-cell-label"/></VBox>
-                <VBox styleClass="calendar-cell" GridPane.rowIndex="5" GridPane.columnIndex="6"><Label text="1" styleClass="calendar-cell-label calendar-cell-muted"/></VBox>
-
             </GridPane>
 
         </VBox>

@@ -10,7 +10,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.donel.taskmanagerdesktop.controllers.PendingController"
+            fx:controller="org.donel.taskmanagerdesktop.Controllers.PendingController"
             fitToWidth="true"
             hbarPolicy="NEVER"
             styleClass="content-scroll">
@@ -22,7 +22,7 @@
             <HBox alignment="CENTER_LEFT">
                 <Label fx:id="pendingCountLabel" text="Pending Tasks" styleClass="section-title"/>
                 <Region HBox.hgrow="ALWAYS"/>
-                <Button text="+ Add Task" styleClass="primary-button"/>
+                <Button fx:id="addTaskButton" text="+ Add Task" styleClass="primary-button" onAction="#handleAddTask"/>
             </HBox>
 
             <VBox fx:id="taskListContainer" spacing="15"/>
