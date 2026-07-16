@@ -1,11 +1,8 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import org.donel.taskmanagerdesktop.controllers.Task;
-import org.donel.taskmanagerdesktop.controllers.TaskService;
-import org.donel.taskmanagerdesktop.controllers.TaskCardFactory;
 
 import java.util.List;
 

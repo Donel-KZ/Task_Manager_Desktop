@@ -1,4 +1,6 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
+
+import java.time.LocalDate;
 
 /**
  * Plain in-memory task model. Once the Spring Boot backend is wired in,
@@ -14,15 +16,17 @@ public class Task {
     private final TaskStatus status;
     private final TaskPriority priority; // only meaningful for PENDING tasks; null otherwise
     private final boolean dueToday;      // used to populate Home's "Today's Tasks" section
+    private final LocalDate dueDate;
 
     public Task(int id, String title, String subtitle, TaskStatus status,
-                TaskPriority priority, boolean dueToday) {
+                TaskPriority priority, boolean dueToday, LocalDate dueDate) {
         this.id = id;
         this.title = title;
         this.subtitle = subtitle;
         this.status = status;
         this.priority = priority;
         this.dueToday = dueToday;
+        this.dueDate = dueDate;
     }
 
     public int getId() {
@@ -47,5 +51,13 @@ public class Task {
 
     public boolean isDueToday() {
         return dueToday;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public Task withStatus(TaskStatus updatedStatus) {
+        return new Task(id, title, subtitle, updatedStatus, priority, dueToday, dueDate);
     }
 }

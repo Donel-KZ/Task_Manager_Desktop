@@ -1,12 +1,23 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+
+import org.donel.taskmanagerdesktop.api.ApiClient;
+import org.donel.taskmanagerdesktop.services.ProjectService;
+import org.donel.taskmanagerdesktop.services.Session;
+import org.donel.taskmanagerdesktop.services.UserResponse;
+
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-
-import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Controls the persistent app shell: sidebar, top bar, and contentArea.
@@ -36,10 +47,16 @@ public class ShellController {
     @FXML private Button calendar;
     @FXML private Button groupProjects;
     @FXML private Button settings;
+    @FXML private Button notificationButton;
+    @FXML private Label notificationCountLabel;
+    @FXML private Button profileButton;
+
+    private final ProjectService projectService = new ProjectService(new ApiClient());
 
     @FXML
     public void initialize() {
         showHome();
+        refreshTopBar();
     }
 
     @FXML
@@ -107,5 +124,81 @@ public class ShellController {
         }
         active.getStyleClass().remove("nav-button");
         active.getStyleClass().add("nav-button-active");
+    }
+
+    private void refreshTopBar() {
+        UserResponse currentUser = Session.getInstance().getCurrentUser();
+
+        String displayName = currentUser == null || currentUser.displayName() == null || currentUser.displayName().isBlank()
+                ? "Guest"
+                : currentUser.displayName();
+
+        profileButton.setText(displayName);
+        profileButton.setGraphic(buildAvatarGraphic(currentUser));
+
+        int dueSoonTasks = (int) TaskService.getInstance().getAllTasks().stream()
+                .filter(task -> task.getDueDate() != null && !task.getStatus().equals(TaskStatus.FINISHED))
+                .filter(task -> ChronoUnit.DAYS.between(LocalDate.now(), task.getDueDate()) >= 0)
+                .filter(task -> ChronoUnit.DAYS.between(LocalDate.now(), task.getDueDate()) <= 3)
+                .count();
+
+        notificationButton.setText(dueSoonTasks > 0 ? "🔔" : "🔔");
+        notificationCountLabel.setText(String.valueOf(dueSoonTasks));
+        notificationCountLabel.setVisible(dueSoonTasks > 0);
+        notificationCountLabel.setManaged(dueSoonTasks > 0);
+
+        Task<List<ProjectResponse>> projectTask = new Task<>() {
+            @Override
+            protected List<ProjectResponse> call() throws Exception {
+                return projectService.getProjects();
+            }
+        };
+        projectTask.setOnSucceeded(event -> {
+            int dueSoonProjects = (int) projectTask.getValue().stream()
+                    .filter(project -> project.dueDate() != null)
+                    .filter(project -> !project.pastDue())
+                    .filter(project -> {
+                        try {
+                            LocalDate dueDate = LocalDate.parse(project.dueDate());
+                            return !dueDate.isBefore(LocalDate.now()) && ChronoUnit.DAYS.between(LocalDate.now(), dueDate) <= 3;
+                        } catch (Exception ignored) {
+                            return false;
+                        }
+                    })
+                    .count();
+            int totalNotifications = dueSoonTasks + dueSoonProjects;
+            notificationCountLabel.setText(String.valueOf(totalNotifications));
+            notificationCountLabel.setVisible(totalNotifications > 0);
+            notificationCountLabel.setManaged(totalNotifications > 0);
+        });
+        projectTask.setOnFailed(event -> {
+            notificationCountLabel.setText(String.valueOf(dueSoonTasks));
+            notificationCountLabel.setVisible(dueSoonTasks > 0);
+            notificationCountLabel.setManaged(dueSoonTasks > 0);
+        });
+
+        Thread thread = new Thread(projectTask);
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private ImageView buildAvatarGraphic(UserResponse currentUser) {
+        ImageView avatar = new ImageView();
+        avatar.setFitWidth(24);
+        avatar.setFitHeight(24);
+        avatar.setPreserveRatio(true);
+
+        if (currentUser != null && currentUser.profilePictureUrl() != null && !currentUser.profilePictureUrl().isBlank()) {
+            try {
+                avatar.setImage(new Image(currentUser.profilePictureUrl(), true));
+                return avatar;
+            } catch (Exception ignored) {
+                // fall through to default icon
+            }
+        }
+
+        Image fallback = new Image(getClass().getResourceAsStream("/org/donel/taskmanagerdesktop/taskmanager_ios_icon_1024.png"));
+        avatar.setImage(fallback);
+        return avatar;
     }
 }

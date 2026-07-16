@@ -1,11 +1,13 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import org.donel.taskmanagerdesktop.controllers.Task;
-import org.donel.taskmanagerdesktop.controllers.TaskService;
-import org.donel.taskmanagerdesktop.controllers.TaskCardFactory;
+import org.donel.taskmanagerdesktop.Dialogs.AddTaskDialog;
+import org.donel.taskmanagerdesktop.Dialogs.NewTaskInput;
+
+import java.io.IOException;
+import java.util.Optional;
 
 public class DashboardController {
 
@@ -18,6 +20,21 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
+        refreshDashboard();
+    }
+
+    @FXML
+    private void addTask() {
+        try {
+            Optional<NewTaskInput> result = AddTaskDialog.show(todayTasksContainer.getScene().getWindow());
+            result.ifPresent(TaskService.getInstance()::addFromInput);
+            refreshDashboard();
+        } catch (IOException e) {
+            throw new IllegalStateException("Unable to open Add Task dialog", e);
+        }
+    }
+
+    private void refreshDashboard() {
         TaskService service = TaskService.getInstance();
 
         totalTasksValue.setText(String.valueOf(service.getTotalCount()));

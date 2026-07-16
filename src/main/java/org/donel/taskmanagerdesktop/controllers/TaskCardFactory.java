@@ -1,19 +1,15 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import org.donel.taskmanagerdesktop.controllers.Task;
-import org.donel.taskmanagerdesktop.controllers.TaskStatus;
-
-import static org.donel.taskmanagerdesktop.controllers.TaskPriority.*;
-import static org.donel.taskmanagerdesktop.controllers.TaskStatus.*;
 
 /**
  * Builds the task-card Node used across Dashboard, Pending, Finished, and
@@ -36,7 +32,9 @@ public final class TaskCardFactory {
         row.setAlignment(Pos.CENTER_LEFT);
         row.setPadding(new Insets(15, 20, 15, 20));
 
-        Label checkbox = new Label(task.getStatus() == TaskStatus.FINISHED ? "☑" : "☐");
+        CheckBox checkbox = new CheckBox();
+        checkbox.setSelected(task.getStatus() == TaskStatus.FINISHED);
+        checkbox.setOnAction(event -> TaskService.getInstance().toggleTaskCompletion(task.getId()));
 
         VBox textBox = new VBox(4);
         Label title = new Label(task.getTitle());

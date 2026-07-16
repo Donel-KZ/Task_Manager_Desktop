@@ -1,4 +1,4 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

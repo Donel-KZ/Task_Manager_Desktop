@@ -1,4 +1,4 @@
-package org.donel.taskmanagerdesktop.controllers;
+package org.donel.taskmanagerdesktop.Controllers;
 
 public enum TaskPriority {
     HIGH,
